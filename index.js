@@ -51,4 +51,6 @@ app.post('/msg',( req,res)=>{
 app.get('/msg', (req,res)=>{
 	res.json(content);
 });
+let port = 8080;
+console.log("lisening on "+port);
 app.listen(8080);

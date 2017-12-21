@@ -8,11 +8,18 @@
 		<script src="./angular-animate/angular-animate.min.js"></script>
 		<script src="./angular-aria/angular-aria.min.js"></script>
 		<script src="./angular-messages/angular-messages.min.js"></script>
-		<script src="./main.js"></script>
+		<script src="./module.js"></script>
+		<script src="./faceFac.js"></script>
+		<script src="./myFac.js"></script>
+		<script src="./urlCnst.js"></script>
+		<script src="./ctrl.js"></script>
+
 </head>
 <body>
 <div ng-app="myApp" ng-controller="myCtrl">
 	{{name}}
+	<input type="file"  
+                id="file" name='file' onchange="angular.element(this).scope().detect(this)" />
 </div>
 </body>
 </html> 
