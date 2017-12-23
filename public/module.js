@@ -1,4 +1,4 @@
 'use strict';
 (function(){
-	angular.module('myApp',[]);
+	angular.module('myApp',['ngMaterial']);
 })();

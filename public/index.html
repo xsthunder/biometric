@@ -18,6 +18,11 @@
 <body>
 <div ng-app="myApp" ng-controller="myCtrl">
 	{{name}}
+	<div ng-if="face_token&&name">
+		<input type="text" ng-model="name">
+		<input type="text" ng-model="msg">
+		<button ng-click="post">
+	</div>
 	<input type="file"  
 			id="file" name='file' onchange="angular.element(this).scope().detect(this)" />
 </div>
