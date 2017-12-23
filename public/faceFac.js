@@ -20,6 +20,12 @@
 				outer_id:'obama'
 			}, cb);
 		}
+		self.addFace = function(token,cb){
+			urlCnst.postFormData( urlCnst.addFace,{
+				face_token:token,
+				outer_id:obama
+			},cb);
+		}
 		return self;
 	}
 
