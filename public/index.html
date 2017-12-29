@@ -1,30 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-		<link rel="stylesheet" href="./angular-material/angular-material.min.css"/>
-		<script src="./angular/angular.min.js"></script>
-		<script src="./angular-material/angular-material.min.js"></script>
-		<script src="./angular-animate/angular-animate.min.js"></script>
-		<script src="./angular-aria/angular-aria.min.js"></script>
-		<script src="./angular-messages/angular-messages.min.js"></script>
-		<script src="./module.js"></script>
-		<script src="./faceFac.js"></script>
-		<script src="./myFac.js"></script>
-		<script src="./urlCnst.js"></script>
-		<script src="./ctrl.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biometric</title>
+    <link rel="stylesheet" href="./angular-material/angular-material.min.css"/>
+    <link rel="stylesheet" href="./app/common/style.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <script src="./angular/angular.min.js"></script>
+    <script src="./angular-material/angular-material.min.js"></script>
+    <script src="./angular-animate/angular-animate.min.js"></script>
+    <script src="./angular-aria/angular-aria.min.js"></script>
+    <script src="./angular-messages/angular-messages.min.js"></script>
+    <script src="./module.js"></script>
+    <script src="./faceFac.js"></script>
+    <script src="./myFac.js"></script>
+    <script src="./urlCnst.js"></script>
+    <script src="./ctrl.js"></script>
 
 </head>
-<body>
-<div ng-app="myApp" ng-controller="myCtrl">
-	{{name}}
-	<div ng-if="face_token&&name">
-		<input type="text" ng-model="name">
-		<input type="text" ng-model="msg">
-		<button ng-click="post">
-	</div>
-	<input type="file"  
-			id="file" name='file' onchange="angular.element(this).scope().detect(this)" />
+<body ng-app="myApp" ng-controller="myCtrl">
+<div>
+
+    <input type="file" id="file" style="display: none"
+           onchange="angular.element(this).scope().detect(this)"/>
+    <md-content layout-padding>
+        <div flex layout="column" layout-align="spacebetween center">
+            <md-button class="md-raised md-primary" ng-click="chooseImg()">
+                choose a img
+            </md-button>
+            <div>
+                face_token:
+            </div>
+            <div>
+                {{token}}
+            </div>
+        </div>
+        <div layout="column" layout-align="spacebetween center">
+        <md-radio-group ng-model="isSearch" ng-init="isSearch='0'" >
+            <md-radio-button value="0" class="md-primary">search</md-radio-button>
+            <md-radio-button value="1">add</md-radio-button>
+        </md-radio-group>
+        </div>
+        <div ng-if="token&&isSearch==='0'" flex layout="column" layout-align="spacebetween center">
+            <md-button class="md-raised md-primary" ng-click="search(token)">
+                search face set
+            </md-button>
+            <md-content>
+                <md-card ng-repeat="maybe in maybes">
+                    <span>confidence:{{maybe.confidence}}</span><br/>
+                    <span>face_token:{{maybe.face_token}}</span><br/>
+                    <span>user_id:{{maybe.user_id}}</span>
+                </md-card>
+            </md-content>
+        </div>
+        <div ng-if="token&&isSearch==='1'" flex layout="column" layout-align="spacebetween center">
+            <md-button class="md-raised md-primary" ng-click="setUserId(token,username)">
+                set username
+            </md-button>
+            <md-input-container>
+                <label>username</label>
+                <input type="text" ng-model="username"><br/>
+            </md-input-container>
+            <md-button class="md-raised md-primary" ng-click="addFace(token)">
+                add to face set
+            </md-button>
+        </div>
+    </md-content>
 </div>
 </body>
 </html> 
