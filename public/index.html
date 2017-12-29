@@ -13,6 +13,7 @@
     <script src="./angular-animate/angular-animate.min.js"></script>
     <script src="./angular-aria/angular-aria.min.js"></script>
     <script src="./angular-messages/angular-messages.min.js"></script>
+    <script src="./blueimp-load-image/js/load-image.all.min.js"></script>
     <script src="./module.js"></script>
     <script src="./faceFac.js"></script>
     <script src="./myFac.js"></script>
@@ -22,7 +23,6 @@
 </head>
 <body ng-app="myApp" ng-controller="myCtrl">
 <div>
-
     <input type="file" id="file" style="display: none"
            onchange="angular.element(this).scope().detect(this)"/>
     <md-content layout-padding>
@@ -36,6 +36,9 @@
             <div>
                 {{token}}
             </div>
+            <canvas id="cv">
+
+            </canvas>
         </div>
         <div layout="column" layout-align="spacebetween center">
         <md-radio-group ng-model="isSearch" ng-init="isSearch='0'" >

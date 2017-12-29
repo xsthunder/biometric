@@ -11,7 +11,8 @@
 		}
 		self.detect = function(file,cb){
 			urlCnst.postFormData( urlCnst.detect, {
-				image_file:file
+				image_file:file,
+                return_landmark:2
 			},cb);
 		}
 		self.search = function(face_token,cb){
