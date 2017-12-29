@@ -12,7 +12,18 @@
 		self.detect = function(file,cb){
 			urlCnst.postFormData( urlCnst.detect, {
 				image_file:file,
-                return_landmark:2
+                return_landmark:2,
+                return_attributes:["gender"
+                        ,"age"
+                        ,"smiling"
+                        ,"headpose"
+                        ,"eyestatus"
+                        ,"emotion"
+                        ,"ethnicity"
+                        ,"beauty"
+                        ,"mouthstatus"
+                        ,"eyegaze"
+                        ,"skinstatus"].join()
 			},cb);
 		}
 		self.search = function(face_token,cb){

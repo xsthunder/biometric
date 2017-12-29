@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +21,8 @@
     <script src="./ctrl.js"></script>
 
 </head>
-<body ng-app="myApp" ng-controller="myCtrl">
-<div>
+<body style="overflow-y: hidden !important" ng-controller="myCtrl" layout="column">
+<md-content style="overflow-y: auto">
     <input type="file" id="file" style="display: none"
            onchange="angular.element(this).scope().detect(this)"/>
     <md-content layout-padding>
@@ -30,21 +30,38 @@
             <md-button class="md-raised md-primary" ng-click="chooseImg()">
                 choose a img
             </md-button>
-            <div>
-                face_token:
-            </div>
-            <div>
-                {{token}}
+            <div layout-align="begin begin">
+                <div> face_token: {{token}}</div>
+                <div> gender: {{face.gender.value}}</div>
+                <div> age: {{face.age.value}}</div>
+                <div> smile: {{face.smile.value>face.smlie.threshold?"yes":"no"}}</div>
+                <div> glass: {{face.glass.value}}</div>
+                <div> ethnicity: {{face.ethnicity.value}}</div>
+                <div> beauty:
+                    <ul>
+                        <li ng-repeat="(key,val) in face.beauty">
+                            {{key}}:{{val}}
+                        </li>
+                    </ul>
+                </div>
+                <div> emotion:
+                    <ul>
+                        <li ng-repeat="(key,val) in face.emotion ">
+                            {{key}}:{{val}}
+                        </li>
+                    </ul>
+                </div>
+                <br/>
             </div>
             <canvas id="cv">
 
             </canvas>
         </div>
         <div layout="column" layout-align="spacebetween center">
-        <md-radio-group ng-model="isSearch" ng-init="isSearch='0'" >
-            <md-radio-button value="0" class="md-primary">search</md-radio-button>
-            <md-radio-button value="1">add</md-radio-button>
-        </md-radio-group>
+            <md-radio-group ng-model="isSearch" ng-init="isSearch='0'">
+                <md-radio-button value="0" class="md-primary">search</md-radio-button>
+                <md-radio-button value="1">add</md-radio-button>
+            </md-radio-group>
         </div>
         <div ng-if="token&&isSearch==='0'" flex layout="column" layout-align="spacebetween center">
             <md-button class="md-raised md-primary" ng-click="search(token)">
@@ -71,6 +88,6 @@
             </md-button>
         </div>
     </md-content>
-</div>
+</md-content>
 </body>
 </html> 

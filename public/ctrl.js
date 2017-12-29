@@ -58,6 +58,7 @@
                         if(!err){
                             face = res.faces[0];
                             $scope.token = res.faces[0].face_token;
+                            $scope.face = res.faces[0].attributes;
                             var ctx = cv.getContext('2d');
                             var lk = face.landmark;
                             for(var i in lk){
