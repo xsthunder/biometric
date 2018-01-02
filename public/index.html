@@ -22,12 +22,22 @@
 </head>
 <body style="overflow-y: hidden !important" ng-controller="myCtrl" layout="column">
 <md-content style="overflow-y: auto">
-    <input type="file" id="file" style="display: none"
+    <input type="file" id="file" accept="image/png, image/jpeg, image/gif" style="display: none"
            onchange="angular.element(this).scope().detect(this)"/>
+    <video id="video" ></video>
     <md-content layout-padding>
         <div flex layout="column" layout-align="spacebetween center">
-            <md-button class="md-raised md-primary" ng-click="chooseImg()">
+            <div layout="column" layout-align="spacebetween center" >
+                <md-radio-group ng-model="isCam" ng-init="isCam='0'">
+                    <md-radio-button value="0" class="md-primary">choose a img</md-radio-button>
+                    <md-radio-button value="1">take a shot</md-radio-button>
+                </md-radio-group>
+            </div>
+            <md-button ng-if="isCam==='0'" class="md-raised md-primary" ng-click="chooseImg()">
                 choose a img
+            </md-button>
+            <md-button ng-if="isCam==='1'" class="md-raised md-primary" ng-click="takeShot()">
+                take a shot
             </md-button>
             <div layout-align="begin begin">
                 <div> face_token: {{token}}</div>
@@ -53,10 +63,9 @@
                 <br/>
             </div>
             <canvas id="cv">
-
             </canvas>
         </div>
-        <div layout="column" layout-align="spacebetween center">
+        <div layout="column" layout-align="spacebetween center" ng-if="token">
             <md-radio-group ng-model="isSearch" ng-init="isSearch='0'">
                 <md-radio-button value="0" class="md-primary">search</md-radio-button>
                 <md-radio-button value="1">add</md-radio-button>
