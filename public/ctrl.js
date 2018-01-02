@@ -18,27 +18,22 @@
             );
         };
 
-        let canvas = document.querySelector("#cv");
-        let video = document.querySelector("#video");
-        let context = canvas.getContext('2d');
-        let streaming = false;
+        var canvas = document.querySelector("#cv");
+        var video = document.querySelector("#video");
+        var context = canvas.getContext('2d');
+        var streaming = false;
         navigator.mediaDevices.getUserMedia({video: true, audio: true})
-            .then(stream => {
-            video.srcObject = stream; // 将捕获的视频流传递给video  放弃window.URL.createObjectURL(stream)的使用
-        video.play(); //  播放视频
-        });
-        function tackcapture() {
-            // 需要判断媒体流是否就绪
-            if (streaming) {
-                context.drawImage(video, 0, 0, 350, 200);// 将视频画面捕捉后绘制到canvas里面
-                img.src = canvas.toDataURL('image/png');// 将canvas的数据传送到img里
-            }
+            .then(function (stream) {
+                video.srcObject = stream; // 将捕获的视频流传递给video  放弃window.URL.createObjectURL(stream)的使用
+                video.play(); //  播放视频
+            });
 
-        }
+        var width;
+        var height;
         video.addEventListener('canplay', function (ev) {
             if (!streaming) {
+                width = video.videoWidth;
                 height = video.videoHeight / (video.videoWidth / width);
-
                 video.setAttribute('width', width);
                 video.setAttribute('height', height);
                 canvas.setAttribute('width', width);
@@ -47,12 +42,27 @@
             }
         }, false);
 
-        $scope.tackShot = function () {
-                // 需要判断媒体流是否就绪
-                if (streaming) {
-                    context.drawImage(video, 0, 0, 350, 200);// 将视频画面捕捉后绘制到canvas里面
-                    img.src = canvas.toDataURL('image/png');// 将canvas的数据传送到img里
+        $scope.takeShot = function () {
+            // 需要判断媒体流是否就绪
+            context.drawImage(video, 0, 0, width, height);// 将视频画面捕捉后绘制到canvas里面
+            // canvas.toDataURL('image/png');// 将canvas的数据传送到img里
+            function cb(err, res) {
+                if (!err) {
+                    let face = res.faces[0];
+                    $scope.token = res.faces[0].face_token;
+                    $scope.face = res.faces[0].attributes;
+                    var ctx = cv.getContext('2d');
+                    var lk = face.landmark;
+                    for (var i in lk) {
+                        ctx.strokeRect(lk[i].x, lk[i].y, 5, 5);
+                    }
                 }
+            }
+
+            var s = canvas.toDataURL('image/png');
+            s = s.substring(s.indexOf(','));
+            // console.log(s);
+            faceFac.detect64(s, cb);
         };
 
 
@@ -91,7 +101,6 @@
         }
 
         $scope.detect = function (e) {
-
             var file = e.files[0];
             var loadingImg = loadImage(
                 file,
@@ -123,7 +132,6 @@
                     notice('add succeed');
                 }
             }
-
             faceFac.setUserId(token, username, cb);
         };
     }

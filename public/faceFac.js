@@ -9,6 +9,23 @@
 				face_token2:"08fca83ef14ea236f99594e7cab62dc5"
 			}, cb)
 		}
+		self.detect64 = function(file,cb){
+            urlCnst.postFormData( urlCnst.detect, {
+                image_base64:file,
+                return_landmark:2,
+                return_attributes:["gender"
+                    ,"age"
+                    ,"smiling"
+                    ,"headpose"
+                    ,"eyestatus"
+                    ,"emotion"
+                    ,"ethnicity"
+                    ,"beauty"
+                    ,"mouthstatus"
+                    ,"eyegaze"
+                    ,"skinstatus"].join()
+            },cb);
+        };
 		self.detect = function(file,cb){
 			urlCnst.postFormData( urlCnst.detect, {
 				image_file:file,
