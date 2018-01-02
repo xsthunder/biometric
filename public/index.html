@@ -65,13 +65,13 @@
             <canvas id="cv">
             </canvas>
         </div>
-        <div layout="column" layout-align="spacebetween center" ng-if="token">
+        <div layout="column" layout-align="spacebetween center" ng-show="token">
             <md-radio-group ng-model="isSearch" ng-init="isSearch='0'">
                 <md-radio-button value="0" class="md-primary">search</md-radio-button>
                 <md-radio-button value="1">add</md-radio-button>
             </md-radio-group>
         </div>
-        <div ng-if="token&&isSearch==='0'" flex layout="column" layout-align="spacebetween center">
+        <div ng-show="token&&isSearch==='0'" flex layout="column" layout-align="spacebetween center">
             <md-button class="md-raised md-primary" ng-click="search(token)">
                 search face set
             </md-button>
@@ -83,7 +83,7 @@
                 </md-card>
             </md-content>
         </div>
-        <div ng-if="token&&isSearch==='1'" flex layout="column" layout-align="spacebetween center">
+        <div ng-show="token&&isSearch==='1'" flex layout="column" layout-align="spacebetween center">
             <md-button class="md-raised md-primary" ng-click="setUserId(token,username)">
                 set username
             </md-button>

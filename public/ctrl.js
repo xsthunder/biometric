@@ -48,7 +48,7 @@
             // canvas.toDataURL('image/png');// 将canvas的数据传送到img里
             function cb(err, res) {
                 if (!err) {
-                    let face = res.faces[0];
+                    var face = res.faces[0];
                     $scope.token = res.faces[0].face_token;
                     $scope.face = res.faces[0].attributes;
                     var ctx = cv.getContext('2d');
