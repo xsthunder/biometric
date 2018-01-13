@@ -1,0 +1,528 @@
+{
+	"info": {
+		"name": "biometric",
+		"_postman_id": "21007e69-137e-ba54-3472-3be91ff82b21",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "faceplusplus",
+			"description": "",
+			"item": [
+				{
+					"name": "Detect API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "api_secret",
+									"value": "{{api_secret}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "image_file",
+									"value": "",
+									"description": "",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api-cn.faceplusplus.com/facepp/v3/detect",
+							"protocol": "https",
+							"host": [
+								"api-cn",
+								"faceplusplus",
+								"com"
+							],
+							"path": [
+								"facepp",
+								"v3",
+								"detect"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Search API",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"obama1\", \"08fca83ef14ea236f99594e7cab62dc5\");",
+									"pm.environment.set(\"obama2\", \"08fca83ef14ea236f99594e7cab62dc5\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "api_secret",
+									"value": "{{api_secret}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "face_token",
+									"value": "{{obama2}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "outer_id",
+									"value": "obama",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api-cn.faceplusplus.com/facepp/v3/search",
+							"protocol": "https",
+							"host": [
+								"api-cn",
+								"faceplusplus",
+								"com"
+							],
+							"path": [
+								"facepp",
+								"v3",
+								"search"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "FaceSet AddFace API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "api_secret",
+									"value": "{{api_secret}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "face_tokens",
+									"value": "{{obama1}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "outer_id",
+									"value": "obama",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api-cn.faceplusplus.com/facepp/v3/faceset/addface",
+							"protocol": "https",
+							"host": [
+								"api-cn",
+								"faceplusplus",
+								"com"
+							],
+							"path": [
+								"facepp",
+								"v3",
+								"faceset",
+								"addface"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "SetUserID API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "api_secret",
+									"value": "{{api_secret}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "face_token",
+									"value": "{{obama1}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "obama",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api-cn.faceplusplus.com/facepp/v3/face/setuserid",
+							"protocol": "https",
+							"host": [
+								"api-cn",
+								"faceplusplus",
+								"com"
+							],
+							"path": [
+								"facepp",
+								"v3",
+								"face",
+								"setuserid"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "useless",
+			"description": "",
+			"item": [
+				{
+					"name": "FaceSet Create API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "api_secret",
+									"value": "{{api_secret}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "display_name",
+									"value": "obama",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "outer_id",
+									"value": "obama",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api-cn.faceplusplus.com/facepp/v3/faceset/create",
+							"protocol": "https",
+							"host": [
+								"api-cn",
+								"faceplusplus",
+								"com"
+							],
+							"path": [
+								"facepp",
+								"v3",
+								"faceset",
+								"create"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "hello",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base-url}}/hello",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"hello"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Compare API",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.environment.set(\"obama1\", \"08fca83ef14ea236f99594e7cab62dc5\");",
+									"pm.environment.set(\"obama2\", \"08fca83ef14ea236f99594e7cab62dc5\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "api_secret",
+									"value": "{{api_secret}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "face_token1",
+									"value": "{{obama1}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "face_token2",
+									"value": "{{obama2}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api-cn.faceplusplus.com/facepp/v3/compare",
+							"protocol": "https",
+							"host": [
+								"api-cn",
+								"faceplusplus",
+								"com"
+							],
+							"path": [
+								"facepp",
+								"v3",
+								"compare"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "add-user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "face_token",
+							"value": "token1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "nickname",
+							"value": "nickname",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base-url}}/add-user",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"add-user"
+					]
+				},
+				"description": "return {\n\tmsg:string,\n\terr:boolean\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "face_token",
+							"value": "token1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base-url}}/login",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": "return {\n\tnickname:string,\n\terr:boolean\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "msg",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nickname",
+							"value": "nickname1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "msg",
+							"value": "hello world",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base-url}}/msg",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"msg"
+					]
+				},
+				"description": "return {\n\terr:boolean,\n\tmsg:string\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "msg",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "face_token",
+							"value": "token1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "hello world",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base-url}}/msg",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"msg"
+					]
+				},
+				"description": "return {\n\terr:boolean,\n\tresult:[\n\t{\n\t\tnickname:string,\n\t\tcontent:string\n\t}\n\t]\n}"
+			},
+			"response": []
+		}
+	]
+}
