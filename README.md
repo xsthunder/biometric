@@ -1,5 +1,7 @@
 # biometric
 
+使用旷视API结合material angulars, angularjs，搭建简单人脸识别系统
+
 ## live demon
 
 [http://l.lovecust.com/biometric](http://l.lovecust.com/biometric)
